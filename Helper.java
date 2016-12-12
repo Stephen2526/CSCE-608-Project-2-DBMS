@@ -262,6 +262,7 @@ public class Helper {
       }else{
         System.out.println("SELECT: cross join smaller relation cannot fit memory\n");
         output = nestedJoin(schema_manager,mem,relationName.get(0),relationName.get(1));
+
         //debuging
         System.out.println("HELPER 266 DEBUG: ");
       }
@@ -274,6 +275,7 @@ public class Helper {
         return null;
       }else{
         Schema schema = mergeSchema(schema_manager,relationName.get(0),relationName.get(1));
+
         if(!schema_manager.relationExists(r1+"cross"+r2)){
           relation = schema_manager.createRelation(r1+"cross"+r2,schema);
         }

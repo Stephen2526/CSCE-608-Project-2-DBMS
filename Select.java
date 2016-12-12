@@ -398,7 +398,9 @@ public class Select extends Guider {
                     assert relation.getAttr().equalsIgnoreCase("TABLE");
                     relationList.add(relation.getChildren().get(0).getAttr());
                 }
+
                 //System.out.println(relationList);
+
                 //six tables
                 if (!distinct&&order==null&&col.getChildren().get(0).getChildren().get(0).getAttr().equals("*")&&expr==null) {
                     //System.out.println("reach here");
@@ -497,6 +499,7 @@ public class Select extends Guider {
                 //Algorithms.mergeField(col);
 
                 ArrayList<String> fields = new ArrayList<>();
+
                 // distinct and order doesn't support *
                 /*for (Node ids: col.getChildren()) {
                     if (ids.getChildren().size() == 1) {// attr
@@ -518,6 +521,7 @@ public class Select extends Guider {
 
                 if(expr != null) {
                     //Algorithms.mergeField(expr.exp_node);
+
                     if(!distinct&&order==null) {
                         //debuging
                         //System.out.println("Select 416 DEBUG: ");
@@ -533,6 +537,7 @@ public class Select extends Guider {
                         relationAfterCross = Helper.filter(schema_manager, memory, relationAfterCross, expr, fields, 1);
                         
                         System.out.println("Select 428 DEBUG: ");
+
                     }
                 }
 
