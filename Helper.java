@@ -264,7 +264,7 @@ public class Helper {
         output = nestedJoin(schema_manager,mem,relationName.get(0),relationName.get(1));
 
         //debuging
-        System.out.println("HELPER 266 DEBUG: ");
+        //System.out.println("HELPER 266 DEBUG: after nestedJoin");
       }
       if(mode==0){
       /* No need to write back */
@@ -452,15 +452,19 @@ public class Helper {
     if(relation.getNumOfBlocks()<mem.getMemorySize()) {
       //one pass for sort of 1 relation
       System.out.println("SELECT: One pass for sorting on 1 relation\n");
+      
+      //debuging
+      /*for (String tmp_str : fieldList) {
+        System.out.println("HELPER 459 DEBUG: executeOrder fieldList: " + tmp_str);
+      }*/
       output = onePassSort(relation, mem, fieldList);
     }else{
       System.out.println("SELECT: Two pass for sorting on 1 relation\n");
       
       //debuging
       /*for (String tmp_str : fieldList) {
-        System.out.println("Helper 450 DEBUG: executeOrder fieldList: " + tmp_str);
+        System.out.println("Helper 467 DEBUG: executeOrder fieldList: " + tmp_str);
       }*/
-      
       output = twoPassSort(relation,mem,fieldList);
       
       //System.out.println("Helper 455 DEBUG: reach here, after twoPassSort");

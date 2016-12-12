@@ -495,6 +495,8 @@ public class Select extends Guider {
 
                 Relation relationAfterCross = MultiRelationCrossJoin(schema_manager, memory, relationList, 1);
 
+                //debuging
+                //System.out.println("SELECT 499 DEBUG: after MultiRelationCrossJoin");
                 // order, distinct, where
                 //Algorithms.mergeField(col);
 
@@ -510,13 +512,14 @@ public class Select extends Guider {
                 }*/
                 fields = relationAfterCross.getSchema().getFieldNames();
                 
-                Scanner in = new Scanner(System.in);
-                in.nextLine();
+                //debuging
+                //Scanner in = new Scanner(System.in);
+                //in.nextLine();
                 
                 //debuging
-                for (String tmp_s : fields) {
+                /*for (String tmp_s : fields) {
                     System.out.println("SELECT 515 DEBUG: fields: " + tmp_s);
-                }
+                }*/
             
 
                 if(expr != null) {
@@ -532,11 +535,11 @@ public class Select extends Guider {
                         return null;
                     }else {
                         //debuging
-                        System.out.println("Select 424 DEBUG: ");
+                        //System.out.println("Select 424 DEBUG: ");
                         
                         relationAfterCross = Helper.filter(schema_manager, memory, relationAfterCross, expr, fields, 1);
                         
-                        System.out.println("Select 428 DEBUG: ");
+                        //System.out.println("Select 428 DEBUG: ");
 
                     }
                 }
@@ -561,7 +564,7 @@ public class Select extends Guider {
 
                 if(order != null) {
                     fields = new ArrayList<>();
-                    fields.add(order.getChildren().get(0).getChildren().get(0).getAttr());
+                    fields.add(order.getChildren().get(0).getChildren().get(0).getAttr() + "." + order.getChildren().get(0).getChildren().get(1).getAttr());
                     Helper.executeOrder(schema_manager, memory, relationAfterCross, fields, 0);
                     return null;
                 }
